@@ -1,7 +1,7 @@
 # Reto desarrollador frontend
 Reto para practicar las habilidades básicas de un desarrollador frontend.
 
-# Enundiado
+# Enunciado
 Realizar una aplicación de una tienda online, que consuma servicios rest, la tienda debe ofrecer las siguientes funcionalidades:
 
 * Registro de usuarios y manejo de sesión en el cliente usando localstorage o Web SQL Database como fuente de datos. 
@@ -21,10 +21,10 @@ El ejercicio debe tener un mínimo de 30 commits se tendrá en cuenta:
 * Interfaz Gráfica
 * Compatibilidad entre navegadores (Incluye celulares)
 
-Se puede reutilizar código de internet, siempre y cuando se citen las fuentes, el trabajo es individual, si encontramos proyectos similares no serán tenidos en cuenta.
-No se permite el uso de frameworks para javascript, solo se usa vanilla javascript o native javascript
+Se puede reutilizar código de internet, siempre y cuando se citen las fuentes, el trabajo es individual.
+Se debe usar jquery v 1.8.2,
 Se debe usar el api que ofrece (https://jsonplaceholder.typicode.com/)
-Se permite el uso de bootstrap y de otras dependencias para la interfaz siempre y cuando sea css	
+Se permite el uso de bootstrap v 3.3.7 y de otras dependencias para la interfaz siempre y cuando sea css	
 
 ## Información de interés
 + Uso de javascript nativo (https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia ,https://reqres.in/, https://www.w3schools.com/js/default.asp )
