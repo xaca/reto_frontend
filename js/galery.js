@@ -52,7 +52,6 @@ $(document).ready(function () {
 
     /**
      * Se adquieren y pintan los productos.
-     * @async
      */
     getAllProductsByGroup(2)
         .then(function (products) {
