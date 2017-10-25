@@ -27,7 +27,6 @@ $(document).ready(function () {
         return $.ajax(api + '/photos?albumId=' + groupId);
     }
 
-
     /**
      * Función para renderizar un producto.
      * 
@@ -50,8 +49,10 @@ $(document).ready(function () {
         htmlElements.productContainer.append(productToRender);
     }
 
+
     /**
      * Se adquieren y pintan los productos.
+     * @async
      */
     getAllProductsByGroup(2)
         .then(function (products) {
