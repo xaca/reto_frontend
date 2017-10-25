@@ -1,10 +1,11 @@
 $(document).ready(function () {
 
     let root = 'https://jsonplaceholder.typicode.com';
-    let products;
+    let products = [];
 
     let htmlElements = {
-        productContainer: $('#productContainer')
+        productContainer: $('#productContainer'),
+        productTemplate: $('#productTemplate')
     }
 
     /**
@@ -15,15 +16,31 @@ $(document).ready(function () {
      */
     function getAllProductsByType(productType) {
         return $.ajax({
-            url: root + '/' + productType,
+            url: root + '/' + productType + "?albumId=1",
             method: 'GET'
         });
     }
 
-    getAllProductsByType("todos")
-        .then(function (data) {
-            products = data;
-            
+    getAllProductsByType("photos")
+        .then(function (products) {
+            products.forEach(function (product) {
+                paintProduct(product);
+            });
         });
+
+    function paintProduct(product) {
+        let productToRender, thumbnail, title;
+
+        productToRender = htmlElements.productTemplate.clone();
+        productToRender.attr("id", "product" + product.id);
+
+        thumbnail = productToRender.find('img:first');
+        thumbnail.attr("src", product.thumbnailUrl);
+
+        title = productToRender.find('h3:first');
+        title.text(product.title);
+
+        htmlElements.productContainer.append(productToRender);
+    }
 
 });
