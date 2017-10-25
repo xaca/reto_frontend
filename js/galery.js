@@ -3,6 +3,10 @@ $(document).ready(function () {
     let root = 'https://jsonplaceholder.typicode.com';
     let products;
 
+    let htmlElements = {
+        productContainer: $('#productContainer')
+    }
+
     /**
      * Función para adquirir todos los elementos de un tipo de producto definido.
      * 
@@ -19,7 +23,7 @@ $(document).ready(function () {
     getAllProductsByType("todos")
         .then(function (data) {
             products = data;
-            console.log(data);
+            
         });
 
 });
