@@ -2,14 +2,17 @@ var producto = {id:"-1", nombre:"No encontrado", precio:0, descripcion:"No tiene
 
 
 $( document ).ready(function() {
+	 localStorage.setItem("producto", JSON.stringify(producto));
+	 var objeto = localStorage.getItem('producto');
+	 var product = JSON.parse(objeto);
 
+	 $("#div_nombre_producto").text(product.nombre);
 
 
 	$("#btn_añadir_carro").click(function(){
 	     localStorage.setItem("productoCarro", JSON.stringify(producto));
-	     var retrievedObject = localStorage.getItem('productoCarro');
-	     var alejo = JSON.parse(retrievedObject)
-	console.log(alejo.id);
+	     
+	
 
 	});
 
