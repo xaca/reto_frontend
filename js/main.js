@@ -1,4 +1,4 @@
-var producto = {id:"-1", nombre:"No encontrado", precio:0, descripcion:"No tiene", calificacion:0, imagen:"img/imagen_gris.png"};
+var producto = {id:"-1", nombre:"Producto 1", precio:100000, descripcion:"Lorem ipsum dolor sit amet, consectetur adipiscing elit", calificacion:4.5, imagen:"img/imagen_gris.png"};
 
 
 $( document ).ready(function() {
