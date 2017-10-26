@@ -6,7 +6,10 @@ $( document ).ready(function() {
 	 var objeto = localStorage.getItem('producto');
 	 var product = JSON.parse(objeto);
 
-	 $("#div_nombre_producto").text(product.nombre);
+	 $("#div_nombre_producto").text("Producto: "+product.nombre);
+	 $("#div_precio_producto").text("Precio: "+product.precio);
+	 $("#div_descripcion_producto").text("Descripción: "+product.descripcion);
+	 $("#div_calificacion_producto").text("Calificación: "+product.calificacion);
 
 
 	$("#btn_añadir_carro").click(function(){
