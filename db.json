@@ -1,6 +1,6 @@
 {
   "id": 1,
   "nombre": "Producto 1",
-  "descripción": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vestibulum dolor id sapien efficitur, vitae efficitur tellus viverra. Vestibulum auctor lacus vitae felis rhoncus, eu vehicula sapien luctus. Pellentesque posuere at elit eu mollis. Curabitur pulvinar eleifend suscipit. Nam hendrerit arcu in mi facilisis blandit. Mauris pharetra ex eu dolor gravida venenatis. Praesent non ipsum malesuada, bibendum purus eu, mollis lectus. Vivamus vitae tortor vel lectus pharetra scelerisque ultricies quis mi. Ut arcu mauris, hendrerit vitae sapien quis, blandit accumsan tellus. Sed eget lorem porta, lacinia diam ut, euismod elit. Suspendisse vel feugiat nisi. Vivamus luctus posuere felis sed commodo. Vivamus iaculis tellus ac mauris ornare, sit amet tempor dolor ultricies. Sed aliquam malesuada erat id lacinia.",
+  "descripción": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vestibulum dolor id sapien efficitur, vitae efficitur tellus viverra.",
   "promedio": 4.5
 }
