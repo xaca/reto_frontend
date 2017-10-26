@@ -1,4 +1,4 @@
-var producto = {id:"-1", nombre:"No encontrado", precio:0, descripcion:"No tiene", calificacion:0};
+var producto = {id:"-1", nombre:"No encontrado", precio:0, descripcion:"No tiene", calificacion:0, imagen:"img/imagen_gris.png"};
 
 
 $( document ).ready(function() {
@@ -8,8 +8,9 @@ $( document ).ready(function() {
 
 	 $("#div_nombre_producto").text("Producto: "+product.nombre);
 	 $("#div_precio_producto").text("Precio: "+product.precio);
-	 $("#div_descripcion_producto").text("Descripción: "+product.descripcion);
+	 $("#div_descripcion_producto").text(product.descripcion);
 	 $("#div_calificacion_producto").text("Calificación: "+product.calificacion);
+	 $("#img_producto").attr("src",product.imagen);
 
 
 	$("#btn_añadir_carro").click(function(){
