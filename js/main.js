@@ -2,9 +2,24 @@ var producto = {id:"-1", nombre:"No encontrado", precio:0, descripcion:"No tiene
 
 
 $( document ).ready(function() {
+
+	
+	//var root = 'https://my-json-server.typicode.com/alejobg/datos';
+
+$.ajax({
+  url: 'https://my-json-server.typicode.com/alejobg/datos',
+  method: 'GET'
+}).then(function(data) {
+  
+  console.log(data);
+});
+
+
 	 localStorage.setItem("producto", JSON.stringify(producto));
 	 var objeto = localStorage.getItem('producto');
 	 var product = JSON.parse(objeto);
+
+	 
 
 	 $("#div_nombre_producto").text("Producto: "+product.nombre);
 	 $("#div_precio_producto").text("Precio: "+product.precio);
