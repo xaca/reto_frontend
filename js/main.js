@@ -45,7 +45,8 @@ $( document ).ready(function() {
     $("#seccion_inicio").hide();
   });
 
-   $("#btn_login").click(function () {
+   
+  $("#btn_login").click(function () {
 
     username_login = $("#txtusername_login").val();
     mail_login = $("#txtmail_login").val();
@@ -73,7 +74,7 @@ $( document ).ready(function() {
     }
 
 
-    });
+  });
 
   
 $("#btn_registrar").click(function () {
@@ -142,112 +143,4 @@ $("#btn_registrar").click(function () {
 
 
 
-  /*$("#btn_login").click(function () {
-
-    username_login = $("#txtusername_login").val();
-    mail_login = $("#txtmail_login").val();
-
-    $.ajax('http://jsonplaceholder.typicode.com/users', {
-       method: 'GET'
-    }).then(function(data) {
-      console.log(data);
-      console.log(username_login);
-      console.log(mail_login);
-      for(var i in data){
-        if (data[i].username ==username_login) {
-          console.log(data[i].username);
-          if (data[i].email==mail_login) {
-            console.log(data[i].email);
-            console.log("Estas logeado");
-           // seccion_inicio.className="hidden";
-           // seccion_principal.className="";
-
-          }
-        }
-      }
-
-
-    });
-
-  });
-
-  $("#btn_registrar").click(function () {
-      
-      nombre = $("#txtnombre").val();
-      username = $("#txtusername").val();
-      mail = $("#txtmail").val();
-      telefono = $("#txttelefono").val();
-      sitio_web = $("#txtsitio_web").val();
-      calle = $("#txtcalle").val();
-      num_apartamento = $("#txtnum_apartamento").val();
-      ciudad = $("#txtciudad").val();
-      codigo_postal = $("#txtcodigo_postal").val();
-      latitud = $("#txtlatitud").val();
-      longitud = $("#txtlongitud").val();
-      nombre_compania = $("#txtnombre_compania").val();
-      lema = $("#txtlema").val();
-      bs = $("#txtbs").val();
-
-     $.ajax('http://jsonplaceholder.typicode.com/users', {
-      type: 'POST',
-      data: {
-        "name": nombre,
-        "username": username,
-        "email": mail,
-        "address": {
-          "street": calle,
-          "suite": num_apartamento,
-          "city": ciudad,
-          "zipcode": codigo_postal,
-          "geo": {
-            "lat": latitud,
-            "lng": longitud
-          }
-        },
-        "phone": telefono,
-        "website": sitio_web,
-        "company": {
-          "name": nombre_compania,
-          "catchPhrase": lema,
-          "bs": bs
-        }
-     }
-    }).then(function(data) {
-      console.log(data);
-      //localStorage.setItem("usuario",data);
-    });
-
- });
-
-
-});
-  /*$("#btn_registrar").click(function () {
-      form_registro = $("#form_registro");
-      json_doc = form_registro.serialize();
-
-      /*nombre = $("#txtnombre").val();
-      username = $("#txtusername").val();
-      mail = $("#txtmail").val();
-      telefono = $("#txttelefono").val();
-      sitio_web = $("#txtsitio_web").val();
-      calle = $("#txtcalle").val();
-      num_apartamento = $("#txtnum_apartamento").val();
-      ciudad = $("#txtciudad").val();
-      codigo_postal = $("#txtcodigo_postal").val();
-      latitud = $("#txtlatitud").val();
-      longitud = $("#txtlongitud").val();
-      nombre_compañia = $("#txtnombre_compania").val();
-      lema = $("#txtlema").val();
-      bs = $("#txtbs").val();
-
-    $.ajax('http://jsonplaceholder.typicode.com/users/', {
-          type: 'POST',
-          data: json_doc
-                     
-     }).then(function(data) {
-          console.log(data);
-        });
-
-  });
-});
-*/
+  
