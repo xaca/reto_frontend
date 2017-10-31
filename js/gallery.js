@@ -69,10 +69,10 @@ $(document).ready(function () {
     /**
      * Función que se ejecuta al dar click en el botón "Agregar al carrito" de cada producto.
      * 
-     * @param {any} element 
+     * @param {Event} event 
      */
-    function onAddToCartClick(element) {
-        let product = $(element.currentTarget);
+    function onAddToCartClick(event) {
+        let product = $(event.currentTarget);
         onCart.push(product.data('product'));
         // localStorage.setItem('items');
     }
