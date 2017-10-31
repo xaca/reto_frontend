@@ -26,5 +26,32 @@ function init()
 
 }
 
+function agregarComentario()
+{
+	vpostId = 1;
+	$.ajax('http://jsonplaceholder.typicode.com/comments', {
+	  method: 'GET'
+	}).then(function(data) {
+		vid = data.length + 1;
+	});
+	vname = document.getElementById("tituloComentario").value;
+	vemail = 'a@a.com'
+	vbody = document.getElementById("comentario").value;
+
+	$.ajax('http://jsonplaceholder.typicode.com/comments', {
+  method: 'POST',
+  data: {
+    postId: vpostId,
+    id: vid,
+    name: vname ,
+		email: vemail,
+		body: vbody
+  }
+	}).then(function(data) {
+	  console.log(data);
+	});
+
+}
+
 
 }
