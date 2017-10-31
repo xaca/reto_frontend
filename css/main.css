@@ -1,9 +1,9 @@
-h1{ 
+.calificar_h1{ 
     text-align: center;
     font-size: 36px;
     color: #000000ea;
 }
 
-.messageError{
+.calificar_messageError{
     color: #ff0000;
 }
