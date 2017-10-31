@@ -7,7 +7,8 @@ $( document ).ready(function() {
 	//var root = 'https://my-json-server.typicode.com/alejobg/datos';
 
 $.ajax({
-  url: 'https://my-json-server.typicode.com/alejobg/datos',
+  url: 'https://my-json-server.typicode.com/alejobg/reto_frontend/db',
+  dataType : 'json',
   method: 'GET'
 }).then(function(data) {
   
