@@ -54,4 +54,19 @@ function agregarComentario()
 }
 
 
+function mostrarDatos()
+{
+	$.ajax('http://jsonplaceholder.typicode.com/comments?postId=1', {
+	//$.ajax('http://jsonplaceholder.typicode.com/comments', {
+	  method: 'GET'
+	}).then(function(data) {
+	  console.log(data);
+		var codigo='';
+		//document.getElementById("mostrarNombre").innerHTML=('Hola '+nombre+ ' tu tienes: '+anos+' años');
+		for (i = 0; i < data.length; i++) {
+			codigo += "<tr> <td> <h4>Comentario"+i+": </h3> </td> <td>"+ data[i].name +" </td> </tr>";
+			codigo += "<tr> <td>  </td>  <td>"+ data[i].body +" </td> </tr>";
+		}
+		document.getElementById("tabla").innerHTML=(codigo);
+	});
 }
