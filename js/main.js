@@ -5,6 +5,8 @@ var btn_qualify;
 var btn_show;
 var error;
 var product_qualify;
+var storage;
+var resultado;
 
 var product = {};
 
@@ -22,6 +24,8 @@ function initVars(){
     product_qualify = document.getElementById("product_qualify");
     btn_qualify = document.getElementById("btn_qualify");
     btn_show = document.getElementById("btn_show");
+    storage = [];
+    resultado = [];
 }
 
 //metodo para iniciar eventos
@@ -87,6 +91,22 @@ function getFromStorage(){
     if(product.qualify == null){
         product.qualify = 0;
     }
+}
+// busca los productos por nombre dentro del local storage
+function buscarProducto(){
+    
+    $("#btn_busqueda").click(function(){
+        var txt_busqueda = $("#txt_busqueda").text;
+        
+        for (var i = 0; i < storage.length; i++) {
+            if(storage[i].nombre.contains(txt_busqueda))
+            {
+                resultado.push(storage[i]);
+            }
+            
+        }
+    });
+
 }
 
 
