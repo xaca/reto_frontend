@@ -1,5 +1,5 @@
-var producto = {id:"-1", nombre:"Producto 1", precio:100000, descripcion:"Lorem ipsum dolor sit amet, consectetur adipiscing elit", calificacion:4.5, imagen:"img/imagen_gris.png"};
-
+//var producto = {id:"-1", nombre:"Producto 1", precio:100000, descripcion:"Lorem ipsum dolor sit amet, consectetur adipiscing elit", calificacion:4.5, imagen:"img/imagen_gris.png"};
+var producto;
 
 $( document ).ready(function() {
 
@@ -7,11 +7,12 @@ $( document ).ready(function() {
 	//var root = 'https://my-json-server.typicode.com/alejobg/datos';
 
 $.ajax({
-  url: 'https://my-json-server.typicode.com/alejobg/reto_frontend/db/0',
+  //url: 'https://my-json-server.typicode.com/alejobg/reto_frontend/db/0',
+  url: 'https://jsonplaceholder.typicode.com/posts/5'
   dataType : 'json',
   method: 'GET'
 }).then(function(data) {
-  
+  producto = data;
   console.log(data);
 });
 
@@ -22,11 +23,16 @@ $.ajax({
 
 	 
 
-	 $("#div_nombre_producto").text("Producto: "+product.nombre);
+	/* $("#div_nombre_producto").text("Producto: "+product.nombre);
 	 $("#div_precio_producto").text("Precio: "+product.precio);
 	 $("#div_descripcion_producto").text(product.descripcion);
 	 $("#div_calificacion_producto").text("Calificación: "+product.calificacion);
-	 $("#img_producto").attr("src",product.imagen);
+	 $("#img_producto").attr("src",product.imagen);*/
+
+	  $("#div_nombre_producto").text("Producto: "+product.title);
+	  $("#div_descripcion_producto").text(product.body);
+	  $("#img_producto").attr("src",'img/imagen_gris.png');
+	  $("#div_precio_producto").text("Precio: "+product.UserId);
 
 
 	$("#btn_añadir_carro").click(function(){
