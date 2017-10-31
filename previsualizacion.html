@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CheckOut</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+	</head>
+	<body>
+		<!-- <div>
+		<h2 class='titulos'>Paso 1</h2>
+		<div class="shopper-informations">
+					<div>
+						<div class="row">
+							<p>Informacion del comprador</p>
+								<form>
+									<input id='inputs' type="text" placeholder="Nombre Completo">
+									<input id='inputs' type="text" placeholder="Nombre de Usuario.">
+								</form>
+						</div>
+						<div>
+							<div class="row">
+								<p>Generar colilla de cobro:</p>
+								<div class="row">
+									<form>
+										<input id='inputs' type="text" placeholder="Email*">
+										<input id='inputs' type="text" placeholder="First Name *">
+										<input id='inputs' type="text" placeholder="Middle Name">
+										<input id='inputs' type="text" placeholder="Last Name *">
+										<input id='inputs' type="text" placeholder="Address 1 *">
+										<input id='inputs' type="text" placeholder="Address 2">
+									</form>
+									<form>
+										<input id='inputs'  type="text" placeholder="Zip / Postal Code *">
+										<select id='inputs' >
+											<option>-- Country --</option>
+											<option>United States</option>
+											<option>Bangladesh</option>
+											<option>UK</option>
+											<option>India</option>
+											<option>Pakistan</option>
+											<option>Ucrane</option>
+											<option>Canada</option>
+											<option>Dubai</option>
+										</select>
+										<select id='inputs' >
+											<option>-- State / Province / Region --</option>
+											<option>United States</option>
+											<option>Bangladesh</option>
+											<option>UK</option>
+											<option>India</option>
+											<option>Pakistan</option>
+											<option>Ucrane</option>
+											<option>Canada</option>
+											<option>Dubai</option>
+										</select>
+										<input id='inputs' type="text" placeholder="Phone *">
+										<input id='inputs' type="text" placeholder="Mobile Phone">
+										<input id='inputs' type="text" placeholder="Numero de Cuenta">
+									</form>
+								</div>
+								<div class="row">
+									<p>Shipping Order</p>
+									<textarea name="message" placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
+									<label><input type="checkbox"> Shipping to bill address</label>
+								</div>
+						</div>
+					</div>
+				</div> -->
+				<div class="review-payment">
+					<h2>Confirmacion y pago</h2>
+				</div>
+
+				<div>
+					<table>
+						<thead>
+							<tr class="cart_menu">
+								<th class="item">Articulo</th>
+								<th class="price">Precio</th>
+								<th class="quantity">Cantidad</th>
+								<th class="total">Total</th>
+							</tr>
+						</thead>
+
+						<!-- Aca se genera la lista de articulos que estan en el carro de compra.-->
+						<tbody id='articulos'> 
+							<!-- <tr>
+								<td class="cart_product">
+									<a href=""><img src="images/cart/one.png" alt=""></a>
+								</td>
+								<td class="cart_description">
+									<h4><a href="">Colorblock Scuba</a></h4>
+									<p>Web ID: 1089772</p>
+								</td>
+								<td class="cart_price">
+									<p>$59</p>
+								</td>
+								<td class="cart_quantity">
+									<div class="cart_quantity_button">
+										<a class="cart_quantity_up" href=""> + </a>
+										<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+										<a class="cart_quantity_down" href=""> - </a>
+									</div>
+								</td>
+								<td class="cart_total">
+									<p class="cart_total_price">$59</p>
+								</td>
+								<td class="cart_delete">
+									<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+								</td>
+							</tr> -->
+
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="4">&nbsp;</td>
+								<td colspan="2">
+									<table class="table table-condensed total-result">
+										<tr>
+											<td>Sub Total</td>
+											<td id="precioTotal"></td>
+										</tr>
+										<tr>
+											<td>Iva</td>
+											<td id="iva">19%</td>
+										</tr>
+										<tr>
+											<td>Costo Envio</td>
+											<td id="costoEnvio"></td>
+										</tr>
+										<tr>
+											<td>Total</td>
+											<td id="precioTotal"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+					<!-- <div class="payment-options">
+						<span>
+							<label><input type="radio">Transferencia bancaria</label>
+						</span>
+						<span>
+							<label><input type="radio"> Paypal</label>
+						</span>
+						<span>
+							<label><input type="checkbox"> Confirmar Pago</label>
+						</span>
+					</div> -->
+				</div>
+				<form>
+					<input type="radio"> Transferencia bancaria<br>
+					<input type="radio"> Paypal<br>
+					<span>
+						<label><input type="checkbox"> Confirmar Pago</label>
+					</span>
+				</form>
+
+			<script  src="https://code.jquery.com/jquery-2.1.4.min.js"  integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="  crossorigin="anonymous"></script>
+			<script type="text/javascript" src='js/main.js'></script>
+	</body>
+</html>
