@@ -1,0 +1,40 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Paginación</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="css/vendor/bootstrap.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+        <!-- Add your site or application content here -->
+
+        <!-- Menu de paginación-->
+        <section id="paginacion">
+            <div class="container centrado">                
+                <ul class="pagination">
+                    <li><button type="button" class="btn btn-default" id="botonAtras"><h6>&laquo;</h6></button></li>
+                    <li class="active"><button type="button" class="btn" id="botonA"><h6 id="textoA">1</h6></button></li>
+                    <li><button type="button" class="btn btn-default" id="botonB"><h6 id="textoB">2</h6></button></li>
+                    <li><button type="button" class="btn btn-default" id="botonC"><h6 id="textoC">3</h6></button></li>
+                    <li><button type="button" class="btn btn-default" id="botonD"><h6 id="textoD">4</h6></button></li>
+                    <li><button type="button" class="btn btn-default" id="botonE"><h6 id="textoE">5</h6></button></li>
+                    <li><button type="button" class="btn btn-default" id="botonAdelante"><h6>&raquo;</h6></button></li>
+                </ul>
+            </div>
+
+            <!-- Contenedor donde se encuentran los elementos--> 
+            <div class="container centro" id="resultado"></div>
+        </section>
+
+
+        <script src="js/paginacion.js"></script>
+    </body>
+</html>
