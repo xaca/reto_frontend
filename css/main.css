@@ -1,0 +1,9 @@
+h1{ 
+    text-align: center;
+    font-size: 36px;
+    color: #000000ea;
+}
+
+.messageError{
+    color: #ff0000;
+}
