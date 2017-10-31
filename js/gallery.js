@@ -14,7 +14,9 @@ $(document).ready(function () {
     let htmlElements = {
         productContainer: $('#productContainer'),
         productTemplate: $('#productTemplate')
-    }
+    };
+
+    let onCart = [];
 
 
     /**
@@ -44,11 +46,23 @@ $(document).ready(function () {
         title = productToRender.find('h3:first');
         title.text(product.title);
 
-        productToRender.data("product", product);
+        addDataToProduct(product);
+
+        productToRender.find('.btn:first').data("product", product);
 
         htmlElements.productContainer.append(productToRender);
     }
-
+    
+    function addDataToProduct(product) {
+        product.cost = Math.random() * 90000 + 10000;
+        product.quantity = Math.random() * 99 + 1;
+    }
+    
+    function onAddToCartClick(element) {
+        let product = $(element.currentTarget);
+        onCart.push(product.data("product"));
+        // localStorage.setItem();
+    }
 
     /**
      * Se adquieren y pintan los productos.
@@ -58,5 +72,7 @@ $(document).ready(function () {
             products.forEach(function (product) {
                 paintProduct(product);
             });
+
+            $('.btn').click(onAddToCartClick);
         });
 });
