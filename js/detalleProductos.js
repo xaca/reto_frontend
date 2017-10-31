@@ -32,6 +32,8 @@ $( document ).ready(function() {
 	$("#btn_anadir_deseos").click(function(){
 	    localStorage.setItem("productoDeseos", JSON.stringify(objeto));
 	});
-
-
+	$("#btn_comentar").click(function(){
+	    window.location.href = 'comentarios.html';
+	});
+ 
 });
