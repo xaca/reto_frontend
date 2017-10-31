@@ -42,111 +42,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //var producto = {id:"-1", nombre:"Producto 1", precio:100000, descripcion:"Lorem ipsum dolor sit amet, consectetur adipiscing elit", calificacion:4.5, imagen:"img/imagen_gris.png"};
 
 //la funcion carga la informacion de un producto, y la muestra en las etiquetas correspondientess
@@ -154,7 +49,7 @@ $( document ).ready(function() {
 	var objeto;
 	var product;	
 	$.ajax({
-	  	url: 'https://jsonplaceholder.typicode.com/posts/5',
+	  	url: 'https://jsonplaceholder.typicode.com/posts/4',
 	 	dataType : 'json',
 	  	method: 'GET'
 	}).then(function(data) {
