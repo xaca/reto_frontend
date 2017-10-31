@@ -9,14 +9,17 @@ $(document).ready(function () {
     let api = 'https://jsonplaceholder.typicode.com';
 
     /**
+     * Productos en el carrito.
+     */
+    let onCart = [];
+
+    /**
      * Elementos html usados en el código.
      */
     let htmlElements = {
         productContainer: $('#productContainer'),
         productTemplate: $('#productTemplate')
     };
-
-    let onCart = [];
 
 
     /**
@@ -53,11 +56,21 @@ $(document).ready(function () {
         htmlElements.productContainer.append(productToRender);
     }
     
+    /**
+     * Función que le da a los productos un precio y una cantidad aleatorias para así poder probar el carrito de compras.
+     * 
+     * @param {Product} product 
+     */
     function addDataToProduct(product) {
         product.cost = Math.round(Math.random() * 90000 + 10000);
         product.quantity = Math.round(Math.random() * 99 + 1);
     }
     
+    /**
+     * Función que se ejecuta al dar click en el botón "Agregar al carrito" de cada producto.
+     * 
+     * @param {any} element 
+     */
     function onAddToCartClick(element) {
         let product = $(element.currentTarget);
         onCart.push(product.data('product'));
