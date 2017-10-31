@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Reto de una tienda online - carrito de compras">
+	<meta name="author" content="Dayron DLR">
+	<title>Tienda | Online</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="css/cart.css" rel="stylesheet">
+	<link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<!--/head-->
+
+<body>
+
+	<body>
+		<header id="header">
+			<!--header-->
+			<div class="header_top">
+				<!--header_top-->
+
+			</div>
+			<!--/header_top-->
+
+			<div class="header-middle">
+				<!--header-middle-->
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="logo pull-left">
+								<a href="index.html">
+									<img src="img/logo.png" alt="" />
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/header-middle-->
+		</header>
+		<!--/header-->
+
+		<section id="cart_items">
+			<div class="container">
+				<div class="breadcrumbs">
+					<ol class="breadcrumb">
+						<li>
+							<a href="#">Home</a>
+						</li>
+						<li class="active">Carrito de compras</li>
+					</ol>
+				</div>
+				<div class="table-responsive cart_info">
+					<table class="table table-condensed">
+						<thead>
+							<tr class="cart_menu">
+								<td class="image">Artículo</td>
+								<td class="description"></td>
+								<td class="price">Precio</td>
+								<td class="quantity">Cantidad</td>
+								<td class="total">Total</td>
+								<td></td>
+							</tr>
+						</thead>
+						<tbody id="products">
+							<!--Se llena desde código-->
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+		<!--/#cart_items-->
+
+		<section id="checkDiscount">
+			<div class="container">
+				<div class="heading">
+					<h3>Qué le gustaría hacer ahora?</h3>
+					<p>Si tiene algún cupón de descuento, ingrese los datos.</p>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="chose_area">
+							<ul class="user_option">
+								<li>
+									<input id="cupon" type="checkbox">
+									<label>Tiene un cupón?</label>
+								</li>
+							</ul>
+							<ul class="user_info">
+								<li class="single_field">
+									<label>Pais:</label>
+									<select id="country" disabled>
+										<option>Select</option>
+										<option>United States</option>
+										<option>Canadá</option>
+										<option>México</option>
+										<option>Colombia</option>
+										<option>Brasil</option>
+										<option>Rusia</option>
+										<option>Ucrania</option>
+										<option>Emiratos Arabes</option>
+									</select>
+
+								</li>
+								<li class="single_field">
+									<label>Region / State:</label>
+									<select id="city" disabled>
+										<option>Select</option>
+										<option>New York</option>
+										<option>Ottawa</option>
+										<option>Ciudad de México</option>
+										<option>Botogá</option>
+										<option>Brasilia</option>
+										<option>Moscú</option>
+										<option>Kiev</option>
+										<option>Dubai</option>
+									</select>
+
+								</li>
+								<li class="single_field zip-field">
+									<label>Código:</label>
+									<input id="codigo" type="text" readonly>
+								</li>
+							</ul>
+							<button id="validar" class="btn btn-default check_out" type="submit" disabled>Validar</button>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="total_area">
+							<ul>
+								<li>Sub Total
+									<span id="subTotal"></span>
+								</li>
+								<li>Iva 19%
+									<span id="iva"></span>
+								</li>
+								<li>Descuento
+									<span id="discount"></span>
+								</li>
+								<li>Total
+									<span id="total"></span>
+								</li>
+							</ul>
+							<button id="gaurdar" class="btn btn-default check_out" type="submit">Guardar</button>
+							<button id="checkOut" class="btn btn-default check_out" type="submit">Check Out</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/#do_action-->
+
+		<footer id="footer">
+			<!--Footer-->
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-2">
+							<div class="companyinfo">
+								<h2>
+									<span>Tienda</span>-Online</h2>
+								<p>Los mejores precios.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				<div class="container">
+					<div class="row">
+						<p class="pull-left">Copyright © 2017 DrackoDG. All rights reserved.</p>
+					</div>
+				</div>
+			</div>
+
+		</footer>
+		<!--/Footer-->
+		<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		 crossorigin="anonymous"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+		<script src="js/plugins.js"></script>
+		<script src="js/cart.js"></script>
+
+		<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+		<script>
+			window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+			ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+		</script>
+		<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+	</body>
+
+</html>
