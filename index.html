@@ -1,38 +1,105 @@
 <!doctype html>
-<html class="no-js" lang="es">
+<html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
-        <title>calificar producto</title>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title> Reto </title>
+        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/vendor/bootstrap.css">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-    </head>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">             
+       </head>
+    
     <body>
-        <section id="qualify">
-            <h1>Calificar producto</h1>
-            <form class="form-horizontal">
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        
+        <section id="seccion_inicio" class="">
+            <div class="container">
+            <br>
+            <br>
+            <br>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Id del producto: </label>
-                    <div class="col-sm-10">
-                        <input type="text" id="productId" class="form-control" name="id" placeholder="000222111" min="1">
-                    </div>
+                    <input type="text" class="form-control" id="txtmail_login" placeholder="Mail" />
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Calificación del producto: </label>
-                    <div class="col-sm-10">
-                        <input type="number" id="product_qualify" class="form-control" name="id" placeholder="2" min="1" max="5">
-                    </div>
-                    <label class="col-sm-2 control-label messageError" id="error"></label>
+                    <input type="password" class="form-control" id="txtusername_login" placeholder="Username" />
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-2">
-                        <button type="button" class="btn btn-success" id="btn_qualify">Calificar</button>
-                        <button type="button" class="btn btn-success" id="btn_show">Ver</button>
-                    </div>
-                </div>
-            </form>
+                
+                    <button class="btn btn-block btn-primary" id="btn_login">Iniciar</button>
+                    <button class="btn btn-block btn-primary" id="btn_registro">Registrarse</button>
+        </section> 
+        
+        <section id="seccion_registro" style="display: none;">
+
+            <div class="container">
+
+                <h1>Registro</h1>
+                <br>
+                <input class="form-control" name="nom" id="txtnombre" placeholder="Nombre" required="" type="text">
+                <br>
+                <input class="form-control" name="username" id="txtusername" placeholder="Username" required="" type="text">
+                <br>
+                <input class="form-control" name="mail" id="txtmail" placeholder="Mail" required=""  type="text">
+                <br>
+                <input class="form-control" name="telefono" id="txttelefono" placeholder="Telefono Celular" required="" type="text">
+                <br>
+                <input class="form-control" name="sitio_web" id="txtsitio_web" placeholder="Sitio Web" required="" type="text">
+                <br>
+                <h4>Datos Dirección</h4>
+                <input class="form-control" name="calle" id="txtcalle" placeholder="Calle" required="" type="text">
+                <br>
+                <input class="form-control" name="num_apartamento" id="txtnum_apartamento" placeholder="Numero de apartamento" required=""  type="text">
+                <br>
+                <input class="form-control" name="ciudad" id="txtciudad" placeholder="Ciudad" required="" type="text">
+                <br>
+                <input class="form-control" name="codigo_postal" id="txtcodigo_postal" placeholder="Código Postal" required="" type="text">
+                <br>
+                <h4>Datos Geocodificación</h4>
+                <input class="form-control" name="latitud" id="txtlatitud" placeholder="Latitud" required=""  type="number">
+                <br>
+                <input class="form-control" name="longitud" id="txtlongitud" placeholder="Longitud" required="" type="number">
+                <br>
+                <h4>Datos Compañia</h4>
+                <input class="form-control" name="nombre_compania" id="txtnombre_compania" placeholder="Nombre de la compañia" required="" type="text">
+                <br>
+                <input class="form-control" name="lema" id="txtlema" placeholder="Lema de la compañia" required="" type="text">
+                <br>
+                <input class="form-control" name="bs" id="txtbs" placeholder="Bs" required="" type="text">
+                <br> 
+               
+                <button id="btn_registrar" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+              
+          </div>
+                
         </section>
+
+
+        <section id="seccion_principal" style="display: none;">
+            <h1>Has iniciado sesión</h1>
+        </section>
+
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+       
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script  src="https://code.jquery.com/jquery-1.8.2.min.js" integrity="sha256-9VTS8JJyxvcUR+v+RTLTsd0ZWbzmafmlzMmeZO9RFyk=" crossorigin="anonymous"></script>
+        
+        <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/vendor/jquery-1.8.2.js"></script>
+               
     </body>
 </html>
