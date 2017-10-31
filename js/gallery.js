@@ -9,12 +9,17 @@ $(document).ready(function () {
     let api = 'https://jsonplaceholder.typicode.com';
 
     /**
+     * Productos en el carrito.
+     */
+    let onCart = [];
+
+    /**
      * Elementos html usados en el código.
      */
     let htmlElements = {
         productContainer: $('#productContainer'),
         productTemplate: $('#productTemplate')
-    }
+    };
 
 
     /**
@@ -36,7 +41,7 @@ $(document).ready(function () {
         let productToRender, thumbnail, title;
 
         productToRender = htmlElements.productTemplate.clone();
-        productToRender.attr("id", "product" + product.id);
+        productToRender.attr('id', 'product' + product.id);
 
         thumbnail = productToRender.find('img:first');
         thumbnail.attr("src", product.thumbnailUrl);
@@ -44,20 +49,43 @@ $(document).ready(function () {
         title = productToRender.find('h3:first');
         title.text(product.title);
 
-        productToRender.data("product", product);
+        addDataToProduct(product);
+
+        productToRender.find('.btn:first').data('product', product);
 
         htmlElements.productContainer.append(productToRender);
     }
-
+    
+    /**
+     * Función que le da a los productos un precio y una cantidad aleatorias para así poder probar el carrito de compras.
+     * 
+     * @param {Product} product 
+     */
+    function addDataToProduct(product) {
+        product.cost = Math.round(Math.random() * 90000 + 10000);
+        product.quantity = Math.round(Math.random() * 99 + 1);
+    }
+    
+    /**
+     * Función que se ejecuta al dar click en el botón "Agregar al carrito" de cada producto.
+     * 
+     * @param {Event} event 
+     */
+    function onAddToCartClick(event) {
+        let product = $(event.currentTarget);
+        onCart.push(product.data('product'));
+        // localStorage.setItem('items');
+    }
 
     /**
      * Se adquieren y pintan los productos.
-     * @async
      */
     getAllProductsByGroup(2)
         .then(function (products) {
             products.forEach(function (product) {
                 paintProduct(product);
             });
+
+            $('.btn').click(onAddToCartClick);
         });
 });
