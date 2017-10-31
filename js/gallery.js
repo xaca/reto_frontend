@@ -38,7 +38,7 @@ $(document).ready(function () {
         let productToRender, thumbnail, title;
 
         productToRender = htmlElements.productTemplate.clone();
-        productToRender.attr("id", "product" + product.id);
+        productToRender.attr('id', 'product' + product.id);
 
         thumbnail = productToRender.find('img:first');
         thumbnail.attr("src", product.thumbnailUrl);
@@ -48,20 +48,20 @@ $(document).ready(function () {
 
         addDataToProduct(product);
 
-        productToRender.find('.btn:first').data("product", product);
+        productToRender.find('.btn:first').data('product', product);
 
         htmlElements.productContainer.append(productToRender);
     }
     
     function addDataToProduct(product) {
-        product.cost = Math.random() * 90000 + 10000;
-        product.quantity = Math.random() * 99 + 1;
+        product.cost = Math.round(Math.random() * 90000 + 10000);
+        product.quantity = Math.round(Math.random() * 99 + 1);
     }
     
     function onAddToCartClick(element) {
         let product = $(element.currentTarget);
-        onCart.push(product.data("product"));
-        // localStorage.setItem();
+        onCart.push(product.data('product'));
+        // localStorage.setItem('items');
     }
 
     /**
