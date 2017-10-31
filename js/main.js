@@ -8,16 +8,17 @@ $( document ).ready(function() {
 
 $.ajax({
   //url: 'https://my-json-server.typicode.com/alejobg/reto_frontend/db/0',
-  url: 'https://jsonplaceholder.typicode.com/posts/5'
+  url: 'https://jsonplaceholder.typicode.com/posts/5',
   dataType : 'json',
   method: 'GET'
 }).then(function(data) {
-  producto = data;
+   localStorage.setItem("producto", JSON.stringify(data));
   console.log(data);
 });
 
+	 
 
-	 localStorage.setItem("producto", JSON.stringify(producto));
+	/* localStorage.setItem("producto", JSON.stringify(producto));*/
 	 var objeto = localStorage.getItem('producto');
 	 var product = JSON.parse(objeto);
 
@@ -32,11 +33,11 @@ $.ajax({
 	  $("#div_nombre_producto").text("Producto: "+product.title);
 	  $("#div_descripcion_producto").text(product.body);
 	  $("#img_producto").attr("src",'img/imagen_gris.png');
-	  $("#div_precio_producto").text("Precio: "+product.UserId);
+	  $("#div_precio_producto").text("Precio: "+product.userId);
 
 
 	$("#btn_añadir_carro").click(function(){
-	     localStorage.setItem("productoCarro", JSON.stringify(producto));
+	     localStorage.setItem("productoCarro", JSON.stringify(objeto));
 	     
 	
 
@@ -44,7 +45,7 @@ $.ajax({
 
 
 	$("#btn_anadir_deseos").click(function(){
-	       localStorage.setItem("productoDeseos", JSON.stringify(producto));
+	       localStorage.setItem("productoDeseos", JSON.stringify(objeto));
 
 	});
 
