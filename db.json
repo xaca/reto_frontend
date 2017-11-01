@@ -1,5 +1,0 @@
-{
-  "posts": [
-     { "id": 3, "nombre": "Producto 1", "precio":"100000", "descripcion":"Lorem ipsum dolor sit amet, consectetur adipiscing elit", "calificacion":"4.5", "imagen":"https://image.freepik.com/iconos-gratis/circulo-negro_318-10391.jpg" }
-  ]
-}
