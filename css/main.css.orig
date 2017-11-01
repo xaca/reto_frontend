@@ -1,17 +1,5 @@
-/*Centra el contenido */
-.centrado{
-    position: relative;
-    left: 30%;
-}
-.calificar_h1{ 
-    text-align: center;
-    font-size: 36px;
-    color: #000000ea;
-}
+<<<<<<< HEAD
 
-.calificar_messageError{
-    color: #ff0000;
-}
 
 html {
     color: #222;
@@ -84,6 +72,8 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+=======
+>>>>>>> f344ca0537af42b752586ac3e3aec7e0d0c16e38
 /*Centra el contenido */
 .centrado{
     position: relative;
@@ -97,6 +87,7 @@ textarea {
 
 .calificar_messageError{
     color: #ff0000;
+<<<<<<< HEAD
 }
 
 
@@ -277,3 +268,6 @@ textarea {
         page-break-after: avoid;
     }
 }
+=======
+}
+>>>>>>> f344ca0537af42b752586ac3e3aec7e0d0c16e38
