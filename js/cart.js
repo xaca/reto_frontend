@@ -1,6 +1,9 @@
 window.onload = function () {
     console.log("ONLOAD");
-    var cart = new Cart(null);
+    var cart = new Cart();
+    var copy = JSON.parse(localStorage.getItem("items"));
+    if (copy != null)
+        localStorage.setItem("copy", copy);
 };
 /**
  * Clase que representa un artículo de la tienda.
@@ -17,12 +20,11 @@ var Cart = /** @class */ (function () {
     /**
      * Constructor de la clase
      */
-    function Cart(nItems) {
+    function Cart() {
         this.item1 = {
             id: "123",
             image: "img/producto1.png",
             name: "pc",
-            description: "Prueba",
             cost: 666666,
             quantity: 6
         };
@@ -30,7 +32,6 @@ var Cart = /** @class */ (function () {
             id: "456",
             image: "img/producto1.png",
             name: "pc2",
-            description: "Prueba",
             cost: 666666,
             quantity: 6
         };
@@ -42,10 +43,9 @@ var Cart = /** @class */ (function () {
          * Contenedora de los códigos de descuento válidos;
          */
         this.codigos = new Array;
+        var nItems = JSON.parse(localStorage.getItem("copy"));
         if (nItems != null && nItems.length > 0) {
-            this.items = nItems;
-            localStorage.setItem("items", JSON.stringify(this.items));
-            this.codigos = ["123AB", "456CD"];
+            this.codigos = ["123AB_10", "456CD_20", "789EF_30"];
             localStorage.setItem("codigos", JSON.stringify(this.codigos));
             this.init();
         }
@@ -53,8 +53,8 @@ var Cart = /** @class */ (function () {
             //this.alertMessage("No se ha seleccionado ningún artículo de la tienda!!!");
             this.items.push(this.item1);
             this.items.push(this.item2);
-            localStorage.setItem("items", JSON.stringify(this.items));
-            this.codigos = ["123AB", "456CD"];
+            localStorage.setItem("copy", JSON.stringify(this.items));
+            this.codigos = ["123AB_10", "456CD_20", "789EF_30"];
             localStorage.setItem("codigos", JSON.stringify(this.codigos));
             this.init();
         }
@@ -64,7 +64,7 @@ var Cart = /** @class */ (function () {
      */
     Cart.prototype.init = function () {
         var _this = this;
-        this.items = JSON.parse(localStorage.getItem("items"));
+        this.items = JSON.parse(localStorage.getItem("copy"));
         this.drawItems(this.items);
         this.costItems();
         for (var index = 0; index < this.items.length; index++) {
@@ -81,9 +81,23 @@ var Cart = /** @class */ (function () {
                 _this.deleteItem(id[1].slice(0, id[1].length - 1));
             });
         }
-        //document.getElementById("cupon").addEventListener("checked", );
-        document.getElementById("cupon").addEventListener("click", this.validar);
+        var checked = document.getElementById("cupon").addEventListener("click", function (check) {
+            if (check.currentTarget.checked) {
+                document.getElementById("country").removeAttribute("disabled");
+                document.getElementById("city").removeAttribute("disabled");
+                document.getElementById("numCod").removeAttribute("readonly");
+                document.getElementById("validar").removeAttribute("disabled");
+                document.getElementById("validar").addEventListener("click", _this.discount);
+            }
+            else {
+                document.getElementById("country").setAttribute("disabled", "");
+                document.getElementById("city").setAttribute("disabled", "");
+                document.getElementById("numCod").setAttribute("readonly", "");
+                document.getElementById("validar").setAttribute("disabled", "");
+            }
+        });
         this.getFacture();
+        document.getElementById("checkOut").addEventListener("click", this.goCheckOut);
     };
     /**
      * Método que muestra los items seleccionados en el carrito en una tabla.
@@ -134,7 +148,10 @@ var Cart = /** @class */ (function () {
             quantItems.setAttribute("type", "text");
             quantItems.setAttribute("autocomplete", "off");
             quantItems.setAttribute("min", "1");
-            quantItems.setAttribute("value", "1");
+            if (JSON.parse(localStorage.getItem("quantItems_" + items[i].id)) != null)
+                quantItems.setAttribute("value", JSON.parse(localStorage.getItem("quantItems_" + this.items[i].id)));
+            else
+                quantItems.setAttribute("value", "1");
             quantItems.setAttribute("readonly", "");
             var less = document.createElement("A");
             less.setAttribute("id", "less_" + items[i].id);
@@ -176,7 +193,7 @@ var Cart = /** @class */ (function () {
      * Método que aumente el número de un mismo artículo.
      */
     Cart.prototype.addQuantity = function (id) {
-        this.items = JSON.parse(localStorage.getItem("items"));
+        this.items = JSON.parse(localStorage.getItem("copy"));
         var input = parseInt(document.getElementById("quantItems_" + id).getAttribute("value"));
         var quantity = (isNaN(input)) ? 1 : input;
         var search = false;
@@ -184,9 +201,12 @@ var Cart = /** @class */ (function () {
             if (this.items[index].quantity > 1 && this.items[index].id == id) {
                 search = true;
                 quantity++;
+                localStorage.setItem("quantItems_" + id, quantity + "");
                 this.items[index].quantity--;
                 document.getElementById("quantItems_" + id).setAttribute("value", quantity + "");
-                localStorage.setItem("items", JSON.stringify(this.items));
+                localStorage.setItem("copy", JSON.stringify(this.items));
+                this.costItems();
+                this.getFacture();
             }
         }
     };
@@ -194,7 +214,7 @@ var Cart = /** @class */ (function () {
      * Método que resta el número de un mismo artículo.
      */
     Cart.prototype.lessQuantity = function (id) {
-        this.items = JSON.parse(localStorage.getItem("items"));
+        this.items = JSON.parse(localStorage.getItem("copy"));
         var input = parseInt(document.getElementById("quantItems_" + id).getAttribute("value"));
         if (isNaN(input))
             this.alertMessage("Sólo tiene un artículo!!!");
@@ -204,10 +224,12 @@ var Cart = /** @class */ (function () {
             for (var index = 0; index < this.items.length && !search; index++) {
                 if (quantity > 1 && this.items[index].id == id) {
                     quantity--;
+                    localStorage.setItem("quantItems_" + id, quantity + "");
                     this.items[index].quantity++;
                     document.getElementById("quantItems_" + id).setAttribute("value", quantity + "");
-                    localStorage.setItem("items", JSON.stringify(this.items));
+                    localStorage.setItem("copy", JSON.stringify(this.items));
                     this.costItems();
+                    this.getFacture();
                 }
             }
         }
@@ -216,7 +238,7 @@ var Cart = /** @class */ (function () {
      * Método que calcula el valor con respecto al número de productos que lleva.
      */
     Cart.prototype.costItems = function () {
-        this.items = JSON.parse(localStorage.getItem("items"));
+        this.items = JSON.parse(localStorage.getItem("copy"));
         for (var index = 0; index < this.items.length; index++) {
             var numItems = parseInt(document.getElementById("quantItems_" + this.items[index].id).getAttribute("value"));
             var quantity = (isNaN(numItems)) ? 1 : numItems;
@@ -229,44 +251,23 @@ var Cart = /** @class */ (function () {
      * @param id identificador del elemento.
      */
     Cart.prototype.deleteItem = function (id) {
-        this.items = JSON.parse(localStorage.getItem("items"));
+        this.items = JSON.parse(localStorage.getItem("copy"));
         var search = false;
         for (var index = 0; index < this.items.length && !search; index++) {
             if (this.items[index].id == id) {
                 search = true;
                 document.getElementById("products").removeChild(document.getElementById("row_" + id));
                 this.items.splice(index, 1);
-                localStorage.setItem("items", JSON.stringify(this.items));
+                localStorage.setItem("copy", JSON.stringify(this.items));
             }
-        }
-    };
-    /**
-     * Método que activa las opciones del cupon.
-     */
-    Cart.prototype.checkDiscount = function () {
-        var country = (document.getElementById("country")).setAttribute("disabled", "false");
-        var city = (document.getElementById("city")).setAttribute("disabled", "false");
-        var validar = (document.getElementById("validar")).setAttribute("disabled", "false");
-    };
-    /**
-     * Método que valida si un codigo tiene descuento
-     */
-    Cart.prototype.validar = function () {
-        var codigo = document.getElementById("codigo").textContent;
-        var search = false;
-        for (var index = 0; index < this.codigos.length && !search; index++) {
-            if ((this.codigos[index]).split("_")[0] == codigo)
-                this.discount(parseInt((this.codigos[index]).split("_")[1]));
-            else
-                this.alertMessage("No es un código válido, si desea intente nuevamente");
         }
     };
     /**
      * Método que calcula el subtotal.
      */
     Cart.prototype.subTotal = function () {
-        var subTotal = document.getElementById("subTotal");
-        this.items = JSON.parse(localStorage.getItem("items"));
+        document.getElementById("subTotal").textContent = "";
+        this.items = JSON.parse(localStorage.getItem("copy"));
         var cost = 0;
         for (var index = 0; index < this.items.length; index++) {
             var val = (document.getElementById("costItems_" + this.items[index].id)).getAttribute("value").split(" ")[1];
@@ -275,30 +276,45 @@ var Cart = /** @class */ (function () {
         document.getElementById("subTotal").appendChild(document.createTextNode("$ " + cost));
     };
     /**
-     * Método que calcula el subtotal.
+     * Método que calcula el iva.
      */
     Cart.prototype.iva = function () {
-        var subTotal = document.getElementById("iva");
+        document.getElementById("iva").textContent = "";
         var val = parseInt((document.getElementById("subTotal").textContent).split(" ")[1]);
         var iva = val - ((val * 19) / 100);
         document.getElementById("iva").appendChild(document.createTextNode("$ " + iva));
     };
     /**
-     * Método que calcula el subtotal.
+     * Método que calcula el descuento.
      */
-    Cart.prototype.discount = function (des) {
-        if (des > 0) {
-            var val = parseInt((document.getElementById("subTotal").textContent).split(" ")[1]);
-            var discount = val - ((val * des) / 100);
-            document.getElementById("discount").appendChild(document.createTextNode("$ " + discount));
+    Cart.prototype.discount = function () {
+        document.getElementById("discount").textContent = "";
+        this.codigos = JSON.parse(localStorage.getItem("codigos"));
+        var aux = document.getElementById("numCod");
+        var cod = aux.getAttribute("value");
+        if (this.codigos.length > 0) {
+            if (cod != "" && cod != null) {
+                for (var index = 0; index < this.codigos.length; index++) {
+                    if ((this.codigos[index]).split("_")[0] == cod) {
+                        var val = parseInt((document.getElementById("subTotal").textContent).split(" ")[1]);
+                        var discount = val - ((val * parseInt((this.codigos[index]).split("_")[1])) / 100);
+                        document.getElementById("discount").appendChild(document.createTextNode("$ " + discount));
+                    }
+                }
+            }
+            else
+                document.getElementById("discount").appendChild(document.createTextNode("$ 0"));
         }
-        else
+        else {
+            this.alertMessage("No existen descuentos por el momento.");
             document.getElementById("discount").appendChild(document.createTextNode("$ 0"));
+        }
     };
     /**
      * Método que calcula el total.
      */
     Cart.prototype.getTotal = function () {
+        document.getElementById("total").textContent = "";
         var subTotal = parseInt((document.getElementById("subTotal").textContent).split(" ")[1]);
         var discount = parseInt((document.getElementById("discount").textContent).split(" ")[1]);
         var total = subTotal - discount;
@@ -310,8 +326,14 @@ var Cart = /** @class */ (function () {
     Cart.prototype.getFacture = function () {
         this.subTotal();
         this.iva();
-        this.discount(0);
+        this.discount();
         this.getTotal();
+    };
+    /**
+     * Método que cambia de vista.
+     */
+    Cart.prototype.goCheckOut = function () {
+        window.location.href = "checkout.html";
     };
     /**
      * Método que envía un mensaje de alerta al usuario.
